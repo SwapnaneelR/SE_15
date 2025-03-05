@@ -6,7 +6,7 @@ class Main {
         Scanner sc = new Scanner(System.in);
 
         String url = "jdbc:postgresql://pg-1af627cc-sray.i.aivencloud.com:28134/defaultdb?ssl=require&user=avnadmin&password=AVNS_j11_bVbkRFF0fOJDpUa";
-	String username = "sray";
+	String username = "avnadmin";
         String password = "AVNS_j11_bVbkRFF0fOJDpUa";
 
         System.out.println("Enter Your role.\nPress 1 for teacher, 2 for student");
