@@ -1,4 +1,18 @@
-## a.java
+# Marks Management System
 
-javac a.java 
-java -cp .:postgresql-42.7.5.jar Main
+## Clone the Repository
+
+```sh
+git clone https://github.com/SwapnaneelR/SE_15
+```
+
+## Execute the Program
+
+```sh
+bash run.sh
+```
+
+If needed, change the file permissions:
+
+```sh
+chmod +x run.sh
