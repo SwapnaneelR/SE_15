@@ -117,20 +117,32 @@ class Main {
     }
 
     private static void handleStudent() {
-        String query = "SELECT *, (oops_marks + dbms_marks + coa_marks + dsa_marks) AS total FROM MARKS ORDER BY total DESC";
+        String query = "SELECT name, roll_no, oops_marks, dbms_marks, coa_marks, dsa_marks, " +
+                "(oops_marks + dbms_marks + coa_marks + dsa_marks) AS total " +
+                "FROM MARKS ORDER BY total DESC";
         try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(query)) {
 
-            System.out.println("Name | Roll No | OOPS | DBMS | COA | DSA | Total");
+            System.out.println("------------------------------------------------------------");
+            System.out.printf("%-15s %-10s %-6s %-6s %-6s %-6s %-6s\n",
+                    "Name", "Roll No", "OOPS", "DBMS", "COA", "DSA", "Total");
+            System.out.println("------------------------------------------------------------");
+
             while (rs.next()) {
-                System.out.println(rs.getString("name") + " | " + rs.getInt("roll_no") + " | " +
-                        rs.getInt("oops_marks") + " | " + rs.getInt("dbms_marks") + " | " +
-                        rs.getInt("coa_marks") + " | " + rs.getInt("dsa_marks") + " | " +
+                System.out.printf("%-15s %-10d %-6d %-6d %-6d %-6d %-6d\n",
+                        rs.getString("name"),
+                        rs.getInt("roll_no"),
+                        rs.getInt("oops_marks"),
+                        rs.getInt("dbms_marks"),
+                        rs.getInt("coa_marks"),
+                        rs.getInt("dsa_marks"),
                         rs.getInt("total"));
             }
+            System.out.println("------------------------------------------------------------");
         } catch (SQLException e) {
             System.out.println("Error fetching data: " + e.getMessage());
         }
     }
+
 }
